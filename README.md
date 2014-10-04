@@ -3,12 +3,10 @@
 Example url parser for Rotunda.
 
 ## Getting Started
-### On the server
-Install the module with: `npm install rotunda_example`
 
 ```javascript
 var rotunda_example = require('rotunda_example');
-rotunda_example.awesome(); // "awesome"
+rotunda_example.parseUrl(format, url);
 ```
 
 ### In the browser
