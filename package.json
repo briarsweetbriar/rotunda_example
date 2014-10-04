@@ -1,0 +1,40 @@
+{
+  "name": "rotunda_example",
+  "description": "Example url parser for Rotunda.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/timothycommoner/rotunda_example",
+  "author": {
+    "name": "commoner",
+    "email": "timothy.baron@gmail.com",
+    "url": "http://www.revolution.cheap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/timothycommoner/rotunda_example.git"
+  },
+  "bugs": {
+    "url": "https://github.com/timothycommoner/rotunda_example/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/timothycommoner/rotunda_example/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/rotunda_example",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0"
+  },
+  "keywords": []
+}
