@@ -71,6 +71,31 @@ exports["getFormatKeys"] = {
 };
 
 
+exports["mapKey"] = {
+  setUp: function(done) {
+    this.accumulator = [{ name: 'initialName', index: 2 }];
+    this.index = 4;
+    done();
+  },
+  'accumulator, :element, index': function(test) {
+    test.expect(1);
+    // tests here
+    var element = ":nextName";
+    var expectedValue = [{ name: "initialName", index: 2 }, { name: "nextName", index: 4 }];
+    test.deepEqual(rotunda_example.mapKey(this.accumulator, element, this.index), expectedValue, "should add key to accumulator if preceded with :");
+    test.done();
+  },
+  'accumulator, element, index': function(test) {
+    test.expect(1);
+    // tests here
+    var element = "skipName";
+    var expectedValue = [{ name: "initialName", index: 2 }];
+    test.deepEqual(rotunda_example.mapKey(this.accumulator, element, this.index), expectedValue, "should skip key if not preceded with :");
+    test.done();
+  }
+};
+
+
 exports["getOptionsObject"] = {
   'options': function(test) {
     test.expect(1);
@@ -78,6 +103,17 @@ exports["getOptionsObject"] = {
     var options = "sort=desc&limit=10";
     var expectedValue = { sort: "desc", limit: 10 };
     test.deepEqual(rotunda_example.getOptionsObject(options), expectedValue, "should return an object with keys/values derived from the options");
+    test.done();
+  }
+};
+
+exports["createOptionStruct"] = {
+  'option': function(test) {
+    test.expect(1);
+    // tests here
+    var option = "sort=desc";
+    var expectedValue = { key: "sort", value: "desc" };
+    test.deepEqual(rotunda_example.createOptionStruct(option), expectedValue, "should return an object with a key and value");
     test.done();
   }
 };
@@ -91,6 +127,26 @@ exports["merge"] = {
     var object2 = { sort: "desc", limit: 10 };
     var expectedValue = { version: 6, collecton: "listings", id: 3, sort: "desc", limit: 10 };
     test.deepEqual(rotunda_example.merge(object1, object2), expectedValue, "should merge the provided objects");
+    test.done();
+  }
+};
+
+
+exports["numberfy"] = {
+  '42': function(test) {
+    test.expect(1);
+    // tests here
+    var string = "42";
+    var expectedValue = 42;
+    test.deepEqual(rotunda_example.numberfy(string), expectedValue, "should return an integer if !isNaN");
+    test.done();
+  },
+  'asdf': function(test) {
+    test.expect(1);
+    // tests here
+    var string = "asdf";
+    var expectedValue = "asdf";
+    test.deepEqual(rotunda_example.numberfy(string), expectedValue, "should return a string if isNaN");
     test.done();
   }
 };
