@@ -1,8 +1,8 @@
 # rotunda_example
 
-Example url parser for Rotunda.
+A url parser, build as example code for Rotunda.
 
-## Getting Started
+## Instructions
 
 ```javascript
 var rotunda_example = require('rotunda_example');
@@ -20,35 +20,40 @@ In your web page:
 ```html
 <script src="dist/rotunda_example.min.js"></script>
 <script>
-awesome(); // "awesome"
-</script>
-```
-
-In your code, you can attach rotunda_example's methods to any object.
-
-```html
-<script>
-var exports = Bocoup.utils;
-</script>
-<script src="dist/rotunda_example.min.js"></script>
-<script>
-Bocoup.utils.awesome(); // "awesome"
+var format = "/:version/api/:collecton/:id";
+var url = "/6/api/listings/3?sort=desc&limit=10";
+parseUrl(format, url);
 </script>
 ```
 
 ## Documentation
-_(Coming soon)_
 
-## Examples
-_(Coming soon)_
+### parseUrl(format, url)
+`parseUrl` digests the provided url, then returns an object containing path variables and options.
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+Its first argument should be a string describing the url. Variable sections of the url should be preceded with a colon, leading to a format like:
 
-_Also, please don't edit files in the "dist" subdirectory as they are generated via Grunt. You'll find source code in the "lib" subdirectory!_
+```javascript
+"/:version/api/:collecton/:id"
+```
 
-## Release History
-_(Nothing yet)_
+In this example, `version`, `collection`, and `id` are all variable sections. If you then provide a `url` like:
+
+```javascript
+"/6/api/listings/3?sort=desc&limit=10"
+```
+
+`parseUrl` will merge the url options with the variable sections of the path, returning an object like:
+
+```javascript
+{
+	version: 6,
+	collection: "listings",
+	id: 3,
+	sort: "desc",
+	limit: 10
+}
+```
 
 ## License
 Copyright (c) 2014 commoner  
